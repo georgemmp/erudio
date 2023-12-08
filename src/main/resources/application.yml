@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    driver:
+      class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/erudio
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      dll-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  spring-doc:
+    pathsToMatch: /api/**/v1/**
+    swagger-ui:
+      use-root-path: true
+
+cors:
+  originPatterns: http://localhost:3000,http://localhost:8080
+
+security:
+  jwt:
+    token:
+      secret-key: 237a5707-cde5-4d91-a74d-1b510f20b4d1
+      expire-length: 3600000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
