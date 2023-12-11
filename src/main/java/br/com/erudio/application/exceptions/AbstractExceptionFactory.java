@@ -1,5 +1,6 @@
 package br.com.erudio.application.exceptions;
 
+import br.com.erudio.domain.interfaces.ExceptionFactory;
 import br.com.erudio.domain.types.ApiMessagesException;
 import br.com.erudio.domain.types.ExceptionType;
 import org.springframework.beans.factory.annotation.Autowired;
