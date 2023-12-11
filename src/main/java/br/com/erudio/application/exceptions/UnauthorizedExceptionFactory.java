@@ -15,7 +15,7 @@ public class UnauthorizedExceptionFactory extends ExceptionFactory {
     private MessageSource messageSource;
 
     @Override
-    protected RuntimeException setException(ApiMessagesException exception, Object... args) {
+    protected RuntimeException create(ApiMessagesException exception, Object... args) {
         String message = this.messageSource.getMessage(exception.getMessage(), args, Locale.ENGLISH);
         return exception.customizedException(new UnauthorizedException(message));
     }
