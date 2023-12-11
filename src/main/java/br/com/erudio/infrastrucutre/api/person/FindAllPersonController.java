@@ -10,10 +10,18 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Locale;
+
+import static org.springframework.data.domain.Sort.Direction.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/people")
@@ -34,7 +42,13 @@ public class FindAllPersonController {
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
             @ApiResponse(description = "Forbidden", responseCode = "403", content = @Content)
     })
-    public List<PersonResponseDTO> execute() {
-        return this.adapter.execute();
+    public ResponseEntity<Page<PersonResponseDTO>> execute(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "limit", defaultValue = "10") Integer limit,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction
+    ) {
+        Direction sort = direction.equalsIgnoreCase("desc") ? DESC : ASC;
+        Pageable pageable = PageRequest.of(page, limit, Sort.by(sort, "firstName"));
+        return ResponseEntity.ok(this.adapter.execute(pageable));
     }
 }

@@ -1,5 +1,6 @@
 package br.com.erudio.application.exceptions;
 
+import br.com.erudio.domain.entities.exception.ForbiddenException;
 import br.com.erudio.domain.types.ApiMessagesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

@@ -13,9 +13,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
 
-    Person personToPersonModel(PersonModel personModel);
+    Person personModelToPerson(PersonModel personModel);
 
-    PersonModel personToPersonModel(Person person);
+    PersonModel personModelToPerson(Person person);
 
     PersonResponseDTO personToPersonResponseDto(Person person);
 

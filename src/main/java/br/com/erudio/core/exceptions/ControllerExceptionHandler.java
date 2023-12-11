@@ -1,9 +1,9 @@
 package br.com.erudio.core.exceptions;
 
-import br.com.erudio.application.exceptions.BadRequestException;
-import br.com.erudio.application.exceptions.ForbiddenException;
-import br.com.erudio.application.exceptions.NotFoundException;
-import br.com.erudio.application.exceptions.UnauthorizedException;
+import br.com.erudio.domain.entities.exception.BadRequestException;
+import br.com.erudio.domain.entities.exception.ForbiddenException;
+import br.com.erudio.domain.entities.exception.NotFoundException;
+import br.com.erudio.domain.entities.exception.UnauthorizedException;
 import br.com.erudio.domain.entities.validation.StandardError;
 import br.com.erudio.domain.entities.validation.ValidationError;
 import jakarta.servlet.http.HttpServletRequest;

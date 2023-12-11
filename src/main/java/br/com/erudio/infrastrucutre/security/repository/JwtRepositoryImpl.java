@@ -33,7 +33,7 @@ public class JwtRepositoryImpl implements JwtRepository {
     @Value("${security.jwt.token.secret-key:secretKey}")
     private String secretKey;
 
-    @Value("${security.jwt.token. expire-length:3600000}")
+    @Value("${security.jwt.token.expire-length:3600000}")
     private Long validityInMilliSeconds;
 
     @Autowired
@@ -42,7 +42,7 @@ public class JwtRepositoryImpl implements JwtRepository {
     @Autowired
     private AbstractExceptionFactory exceptionFactory;
 
-    private Algorithm algorithm = null;
+    private Algorithm algorithm;
 
     private static final String BEARER = "Bearer ";
 
@@ -89,8 +89,8 @@ public class JwtRepositoryImpl implements JwtRepository {
 
     @Override
     public Token createRefreshToken(String refreshToken) {
-        if (refreshToken.contains("Bearer ")) {
-            refreshToken = refreshToken.substring("Bearer ".length());
+        if (refreshToken.contains(BEARER)) {
+            refreshToken = refreshToken.substring(BEARER.length());
         }
 
         DecodedJWT decodedJWT = this.decodedJWT(refreshToken);

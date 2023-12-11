@@ -1,18 +1,18 @@
-package br.com.erudio.application.exceptions;
+package br.com.erudio.domain.entities.exception;
 
 import br.com.erudio.domain.interfaces.CustomizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.UNAUTHORIZED)
-public class UnauthorizedException extends RuntimeException implements CustomizedException {
+@ResponseStatus(HttpStatus.FORBIDDEN)
+public class ForbiddenException extends RuntimeException implements CustomizedException {
 
     private String message;
     private HttpStatus code;
 
-    public UnauthorizedException(String message) {
+    public ForbiddenException(String message) {
         this.message = message;
-        this.code = HttpStatus.UNAUTHORIZED;
+        this.code = HttpStatus.FORBIDDEN;
     }
 
     @Override

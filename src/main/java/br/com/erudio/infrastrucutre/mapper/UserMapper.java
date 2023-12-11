@@ -17,7 +17,7 @@ public interface UserMapper {
     UserModel userToUserModel(User user);
 
     @Mappings(value = {
-        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "user.id", ignore = true),
         @Mapping(target = "accountNonExpired", ignore = true),
         @Mapping(target = "accountNonLocked", ignore = true),
         @Mapping(target = "credentialsNonExpired", ignore = true),
